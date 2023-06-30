@@ -1,32 +1,60 @@
-# _Sample project_
+# ESP-IDF LVGL Template
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+It can Start Lvgl Project with ESP-IDF Framework For you
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
-
-
-
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
-
-## Example folder contents
-
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
+Get Start
 
 ```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
+git clone --recurse-submodules git@github.com:myfreax/esp-idf-lvgl.git
+idf.py build
 ```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+
+## Configure Screen Display Size
+
+You need to set the display horizontal and vertical size, color depth and swap of RGB565 color on the LVGL configuration menuconfig (it's not handled automatically)
+
+```
+idf.py menuconfig
+```
+
+`Component config` → `LVGL ESP Drivers` → `LVGL TFT Display controller`
+
+- Maximal horizontal resolution
+- Maximal vertical resolution
+
+## Tested ESP-IDF Versions:
+
+- master (5.2)
+- release/v5.1
+- release/v5.0
+- release/v4.4
+- release/v4.3
+- release/v4.2
+
+## Tested LVGL Versions
+
+- release/v8.3
+
+## Tested MCUs
+
+- ESP32-WROVER-E (Freenove, 240Mhz, 4MB Flash, 8MB PSRAM)
+- ESP32-S3-WROOM-1 [N8R8] (Freenove, 240Mhz, 8MB Flash, 8MB PSRAM)
+
+## Tested Displays
+
+- 128x64 SSD1306 OLED
+- 128x128 ST7735
+- 320x240 ILI9341 (with HR2046)
+- 240x240 GC9A01 (round display)
+- 170×320 ST7789V2
+- 320x480 ILI9486 (with XPT2046)
+
+## Additional Changes
+
+- change touch controller readouts to verbose logger
+- use spi dma chan auto for esp32s3
+- fixes for 128x128 ST7735 display
+
+## Thank
+
+[hiruna/lvgl_esp32_drivers](https://github.com/hiruna/lvgl_esp32_drivers/tree/develop/lvgl_8.3.7_idf_5.2)
