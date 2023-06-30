@@ -1,8 +1,8 @@
 # ESP-IDF LVGL Template
 
-It can Start Lvgl Project with ESP-IDF Framework For you
+It Can Start LVGL Project with ESP-IDF Framework For you
 
-Get Start
+## Get Start
 
 ```
 git clone --recurse-submodules git@github.com:myfreax/esp-idf-lvgl.git
